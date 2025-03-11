@@ -1,18 +1,19 @@
-library IEEE;
-use IEEE.std_logic_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
 
-entity full_adder is
-    Port ( A : in  std_logic;
-           B : in  std_logic;
-			  CarryIn: in std_logic;
-           Sum : out  std_logic;
-           CarryOut : out  std_logic);
-end full_adder;
+ENTITY full_adder IS
+    PORT (
+        A : IN STD_LOGIC;
+        B : IN STD_LOGIC;
+        CarryIn : IN STD_LOGIC;
+        Sum : OUT STD_LOGIC;
+        CarryOut : OUT STD_LOGIC);
+END full_adder;
 
-architecture dataflow of full_adder is
-begin
+ARCHITECTURE dataflow OF full_adder IS
+BEGIN
 
-    Sum  <= A xor B xor CarryIn;
-    CarryOut <= (A and B) or ((A xor B) and CarryIn);
+    Sum <= A XOR B XOR CarryIn;
+    CarryOut <= (A AND B) OR ((A XOR B) AND CarryIn);
 
-end dataflow;
+END dataflow;
