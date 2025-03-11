@@ -17,13 +17,11 @@ END adder_nbit;
 ARCHITECTURE structural OF adder_nbit IS
 
     COMPONENT full_adder IS
-        PORT (
-            i_a : IN STD_LOGIC;
-            i_b : IN STD_LOGIC;
-            i_carry_in : IN STD_LOGIC;
-            o_sum : OUT STD_LOGIC;
-            o_carry_out : OUT STD_LOGIC
-        );
+        Port ( A : in  std_logic;
+           B : in  std_logic;
+			  CarryIn: in std_logic;
+           Sum : out  std_logic;
+           CarryOut : out  std_logic);
     END COMPONENT;
 
     SIGNAL s_carry : STD_LOGIC_VECTOR(0 TO N) := (OTHERS => '0');
@@ -35,11 +33,11 @@ BEGIN
     adder_gen : FOR i IN 0 TO N - 1 GENERATE
         FA : full_adder
         PORT MAP(
-            i_a => i_a(i),
-            i_b => i_b(i),
-            i_carry_in => s_carry(i),
-            o_sum => o_sum(i),
-            o_carry_out => s_carry(i + 1)
+            A => i_a(i),
+            B => i_b(i),
+            CarryIn => s_carry(i),
+            Sum => o_sum(i),
+            CarryOut => s_carry(i + 1)
         );
     END GENERATE adder_gen;
 

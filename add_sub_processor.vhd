@@ -1,14 +1,14 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL; -- Include numeric_std for type conversions
+USE ieee.numeric_std.ALL; 
 
 ENTITY add_sub_processor IS
     PORT (
         instruction : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
         clk : IN STD_LOGIC;
-        op1 : OUT STD_LOGIC;
-        op2 : OUT STD_LOGIC;
-        result : OUT STD_LOGIC;
+        op1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        op2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        result : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
 END add_sub_processor;
 
@@ -45,7 +45,7 @@ BEGIN
     s_add_sub <= NOT instruction(27);
     op1 <= s_a;
     op2 <= s_b;
-    op3 <= s_o;
+    result <= s_o;
     register_file_inst : register_file_3port
     PORT MAP(
         clk => clk,
