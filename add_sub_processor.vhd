@@ -42,7 +42,7 @@ ARCHITECTURE Behavioral OF add_sub_processor IS
     SIGNAL s_o : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL s_add_sub : STD_LOGIC;
 BEGIN
-    s_add_sub <= NOT instruction(27);
+    s_add_sub <= instruction(1);
     op1 <= s_a;
     op2 <= s_b;
     result <= s_o;

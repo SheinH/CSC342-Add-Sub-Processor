@@ -23,9 +23,19 @@ ARCHITECTURE behavior OF tb_add_sub_processor IS
     SIGNAL op1         : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL op2         : STD_LOGIC_VECTOR(31 DOWNTO 0);
     SIGNAL result      : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SIGNAL s_addr1 : STD_LOGIC_VECTOR(4 downto 0);
+    SIGNAL s_addr2 : STD_LOGIC_VECTOR(4 downto 0);
+    SIGNAL s_addr3 : STD_LOGIC_VECTOR(4 downto 0);
+    SIGNAL opcode : STD_LOGIC_VECTOR(5 downto 0);
+    SIGNAL add_or_sub : STD_LOGIC;
 
 BEGIN
 
+    opcode <= instruction(31 downto 26);
+    s_addr1 <= instruction(25 DOWNTO 21);
+    s_addr2 <= instruction(20 DOWNTO 16);
+    s_addr3 <= instruction(15 downto 11);
+    add_or_sub <= instruction(1);
     uut: add_sub_processor
         PORT MAP (
             instruction => instruction,
@@ -46,11 +56,10 @@ BEGIN
     stimulus: PROCESS
     BEGIN
         -- Initialize the instruction signal
-        instruction <= "00000000001000100101000000000000";
+        instruction <= "00000000001000100101100000100000";
         WAIT FOR 20 ns;
-        instruction <= "00000000001000100101000000010000";
-        WAIT FOR 20 ns;
-        
+        instruction <= "00000001010001010110000000100010";
+	WAIT FOR 20 ns;
         -- Insert additional stimulus assignments here
         
         WAIT;  -- Wait forever

@@ -28,15 +28,7 @@ ARCHITECTURE structural OF adder_subtracter IS
 
 	SIGNAL s_b : STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
 BEGIN
-	PROCESS (i_a, i_b, i_add_sub)
-	BEGIN
-		IF i_add_sub = '0' THEN
-			s_b <= i_b;
-		ELSE
-			s_b <= NOT i_b;
-		END IF;
-	END PROCESS;
-
+	s_b <= i_b xor std_logic_vector'(i_b'range => i_add_sub);
 	ADDER : adder_nbit
 	PORT MAP(
 		i_a => i_a,
