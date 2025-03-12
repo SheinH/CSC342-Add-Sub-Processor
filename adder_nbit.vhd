@@ -1,7 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
-ENTITY adder_nbit IS
+ENTITY adder_nbit_htike IS
     GENERIC (
         N : POSITIVE := 32
     );
@@ -12,9 +12,9 @@ ENTITY adder_nbit IS
         o_sum : OUT STD_LOGIC_VECTOR(N - 1 DOWNTO 0);
         o_carry_out : OUT STD_LOGIC
     );
-END adder_nbit;
+END adder_nbit_htike;
 
-ARCHITECTURE structural OF adder_nbit IS
+ARCHITECTURE structural OF adder_nbit_htike IS
 
     COMPONENT full_adder IS
         Port ( A : in  std_logic;
